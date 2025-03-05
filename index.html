@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SATI Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .message {
+      font-size: 30px;
+      color: #ff6347;
+      font-weight: bold;
+      margin-top: 30px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to SATI DEGREE COLLEGE Result Portal</h1>
+  <p>Click the button below to check your results!</p>
+  
+  <button class="button" id="resultButton">View Results</button>
+
+  <div class="message" id="aprilFoolsMessage">
+    <p>🎉 KYA RE CHIKNE BOT JALDI HAI RESULT KI TEREKO 😜</p>
+  </div>
+
+  <script>
+    document.getElementById("resultButton").addEventListener("click", function() {
+      let enrollmentNumber = prompt("Please enter your enrollment number:");
+      
+      if (enrollmentNumber) {
+        console.log("Enrollment number entered: " + enrollmentNumber);
+        document.getElementById("resultButton").style.display = "none";
+
+        let message = document.getElementById("aprilFoolsMessage");
+        message.style.display = "block";
+
+        setTimeout(() => {
+          message.style.opacity = 1;
+        }, 10);
+      } else {
+        alert("Enrollment number is required to proceed!");
+      }
+    });
+  </script>
+
+</body>
+</html>
