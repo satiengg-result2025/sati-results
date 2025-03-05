@@ -6,14 +6,42 @@
   <title>SATI Results</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #002147;
+      color: white;
       text-align: center;
-      padding: 50px;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .form-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .input-field {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: block;
     }
     .button {
       padding: 10px 20px;
-      font-size: 20px;
-      background-color: #4CAF50;
+      font-size: 18px;
+      background-color: #f39c12;
       color: white;
       border: none;
       border-radius: 5px;
@@ -21,46 +49,61 @@
       transition: background-color 0.3s ease;
     }
     .button:hover {
-      background-color: #45a049;
+      background-color: #e67e22;
     }
     .message {
-      font-size: 30px;
-      color: #ff6347;
+      font-size: 24px;
+      color: #d9534f;
       font-weight: bold;
       margin-top: 30px;
       display: none;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #002147;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to SATI DEGREE COLLEGE Result Portal</h1>
-  <p>Click the button below to check your results!</p>
+  <div class="header">SATI Degree College - Result Portal</div>
   
-  <button class="button" id="resultButton">View Results</button>
-
-  <div class="message" id="aprilFoolsMessage">
-    <p>🎉 KYA RE CHIKNE BOHOT JALDI HAI RESULT KI TEREKO🖕</p>
+  <div class="container">
+    <h2>Enter your Enrollment Number to view results</h2>
+    <div class="form-container">
+      <input type="text" id="enrollmentInput" class="input-field" placeholder="Enrollment Number">
+      <button class="button" id="resultButton">View Results</button>
+    </div>
+    <div class="message" id="aprilFoolsMessage">
+      <p>🎉 KYA RE CHIKNE BOT JALDI HAI RESULT KI TEREKO 😜</p>
+    </div>
   </div>
+
+  <footer>
+    © 2025 SATI Engineering College. All rights reserved.
+  </footer>
 
   <script>
     document.getElementById("resultButton").addEventListener("click", function() {
-      let enrollmentNumber = prompt("Please enter your enrollment number:");
+      let enrollmentNumber = document.getElementById("enrollmentInput").value.trim();
       
       if (enrollmentNumber) {
         console.log("Enrollment number entered: " + enrollmentNumber);
-        document.getElementById("resultButton").style.display = "none";
+        document.querySelector(".form-container").style.display = "none";
 
         let message = document.getElementById("aprilFoolsMessage");
         message.style.display = "block";
-
         setTimeout(() => {
           message.style.opacity = 1;
         }, 10);
       } else {
-        alert("Enrollment number is required to proceed!");
+        alert("Please enter a valid enrollment number.");
       }
     });
   </script>
