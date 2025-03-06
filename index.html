@@ -60,6 +60,13 @@
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
+    .visitor-info {
+      font-size: 20px;
+      color: #007bff;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -67,10 +74,6 @@
       color: white;
       text-align: center;
       font-size: 14px;
-    }
-    .visitor-info {
-      margin-top: 20px;
-      font-size: 16px;
     }
   </style>
 </head>
@@ -86,13 +89,9 @@
     </div>
     <div class="message" id="aprilFoolsMessage">
       <p>🎉 KYA RE BOHOT JALDI HAI RESULT KI TEREKO 😜</p>
+      <div class="visitor-info">You are visitor #<span id="visitorCount">0</span> 🎭</div>
     </div>
     <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollolol.mp3"></audio>
-    
-    <div class="visitor-info" id="visitorInfo">
-      <h3>Visitors: <span id="visitorCount">0</span></h3>
-      <p id="ipInfo">Fetching your IP address...</p>
-    </div>
   </div>
 
   <footer>
@@ -106,14 +105,6 @@
     localStorage.setItem("visitorCount", visitorCount);
     document.getElementById("visitorCount").textContent = visitorCount;
 
-    // Fetch IP and Location
-    fetch("https://api.ipify.org?format=json")
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("ipInfo").textContent = "Your IP: " + data.ip;
-      })
-      .catch(error => console.error("Error fetching IP:", error));
-
     document.getElementById("resultButton").addEventListener("click", function() {
       let enrollmentNumber = document.getElementById("enrollmentInput").value.trim();
       
@@ -122,8 +113,10 @@
         document.querySelector(".form-container").style.display = "none";
 
         let message = document.getElementById("aprilFoolsMessage");
+        let visitorInfo = document.querySelector(".visitor-info");
         message.style.display = "block";
-        
+        visitorInfo.style.display = "block";
+
         let audio = document.getElementById("prankAudio");
         audio.play();
 
