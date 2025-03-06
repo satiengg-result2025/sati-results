@@ -83,6 +83,7 @@
     <div class="message" id="aprilFoolsMessage">
       <p>🎉 KYA RE CHIKNE BOT JALDI HAI RESULT KI TEREKO 😜</p>
     </div>
+    <audio id="prankAudio" src="https://www.myinstants.com/media/sounds/trollolol.mp3"></audio>
   </div>
 
   <footer>
@@ -99,6 +100,10 @@
 
         let message = document.getElementById("aprilFoolsMessage");
         message.style.display = "block";
+        
+        let audio = document.getElementById("prankAudio");
+        audio.play();
+
         setTimeout(() => {
           message.style.opacity = 1;
         }, 10);
